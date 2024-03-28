@@ -40,9 +40,10 @@ fetch(`http://localhost:8080/api/deleteuserpost/${id}`,{
 
   };
   return (
-    <div className="container">
+    <div className=" p-3 mb-2 bg-primary-subtle text-primary-emphasis">
       <br />
       <br />
+      <h2 className=" mb-2 bg-primary-dark text-center ">User Post </h2>
       <br />
       <br />
       <div className="row">
@@ -61,7 +62,7 @@ fetch(`http://localhost:8080/api/deleteuserpost/${id}`,{
                 <br />
                 <div className="d-flex justify-content-between">
                   <button className="btn btn-primary btn-sm" onClick={() => navigator(`/update/${emp.id}`)}>Aprove</button>
-                  <button className="btn btn-danger btn-sm" onClick={() => navigator(`/delete/${emp.id}`)}>Delete</button>
+                  {/* <button className="btn btn-danger btn-sm" onClick={() => navigator(`/delete/${emp.id}`)}>Delete</button> */}
                 
                 {/* Do NOT REMOVE */}
                   <button className="btn btn-danger btn-sm" onClick={() => deletePostuser(emp.id)}>Delete</button>

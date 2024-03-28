@@ -68,7 +68,17 @@ const RegistrationForm = () => {
         if (response.ok) {
           console.log("Registration successful");
           setLoggedIn(true);
-          navigate("/about");
+          if (role==='admin') {
+            
+            navigate("/about");
+          }else if (role==='user') {
+
+            navigate("/userlogin");
+            
+          }else{
+            navigate(-1)
+          }
+
         } else {
           console.error("Registration failed");
           setLoggedIn(false);

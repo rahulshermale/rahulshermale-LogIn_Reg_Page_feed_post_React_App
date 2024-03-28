@@ -6,7 +6,7 @@ import Navbar from "./Component/Navabar";
 import Home from "./Component/Home";
 import AdminLogin from "./Component/Login";
 import Register from "./Component/Registration";
-import FeedPage from "./Component/FeedPage";
+
 import ListEmployee from "./Component/ListEmployee";
 
 import UpdateUser from "./Component/UpdateUser";
@@ -21,6 +21,7 @@ import Navbar1 from "./Component/Navabar";
 import Admindash from "./Component/Admin_panel/Admindash";
 import AdminAllenq from "./Component/Admin_panel/AdminAllenq";
 import View_My_Post from "./Component/View_My_Post";
+import ApproveUserPost from "./Component/ApproveUserPost";
 function App(props) {
   return (
     
@@ -58,6 +59,7 @@ function App(props) {
         {/* <Route path='/update/:id' element={<Register/>} /> */}
 
         <Route path='/update/:id' element={<UpdateUser/>}/>
+        <Route path='/approve/:id' element={<ApproveUserPost/>}/>
 
 
         <Route path={`/delete`} element={<DeleteUser/>}/>

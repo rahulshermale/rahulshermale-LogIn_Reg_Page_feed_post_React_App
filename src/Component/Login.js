@@ -51,7 +51,7 @@ function registerUser(){
                 console.log('Invalid response format');
             }
         } catch (error) {
-            console.error('Error fetching staff data:', error);
+            console.error('Error fetching Admin data:', error);
         }
     };
 

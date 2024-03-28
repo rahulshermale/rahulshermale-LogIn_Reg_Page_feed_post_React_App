@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "reactstrap";
 import AdminButtons from "./AdminButtons";
+import { useNavigate, useParams } from "react-router-dom";
+
 
 function AdminAllenq(props) {
   const [mydata, setMydata] = useState([]);
+
+  const navigate = useNavigate();
+
+  
+
+
+
+
 
   useEffect(() => {
     myfetch();
@@ -20,9 +30,11 @@ function AdminAllenq(props) {
       })
       .then((result) => {
         setMydata(result);
-        console.log("Admin All Enquerry "+mydata);
+        
+        console.log("Admin All Enquerry "+ mydata);      //})
+        console.log("Admin All Enquerry result"+ result);      })
 
-      })
+
       .catch((error) => {
         console.error("Error fetching posts:", error);
       });
@@ -32,6 +44,10 @@ function AdminAllenq(props) {
   const approvePost = (id) => {
     console.log("Update post with ID:", id);
     // Implement your logic for approving a post
+
+
+    navigate(`/approve/${id}`);
+
   };
 
   
@@ -60,10 +76,17 @@ fetch(`http://localhost:8080/api/delete/${id}`,{
         <AdminButtons />
         <Col md="6" mr="4" className="mx-auto text-center p-3 mb-2  text-primary-emphasis">
           {mydata.map((post) => (
-            <div key={post.feed_id} className="card mb-5 shadow-sm bg-success p-2 text-white bg-opacity-50">
-              {console.log("AdminAllenq Comp "+post.feed_id)}
+            <div key={post.pid} className="card mb-5 shadow-sm bg-success p-2 text-white bg-opacity-50">
+              {console.log("AdminAll enq Comp Post ID "+post.id)}
+
+              {}
+              {console.log("AdminAll enq Comp Post ID "+post.post)}
+              {console.log("AdminAll enq Comp Post ID "+post.date)}
+              {console.log("AdminAll enq Comp Post name "+post.name)}
+              {console.log("AdminAll enq Comp Post role "+post.role)}
+              {console.log("AdminAll enq Comp Post username "+post.username)}
               <div className="card-body">
-                <h5 className="card-title bg-primary-subtle">{post.feed_id}</h5>
+                {/* <h5 className="card-title bg-primary-subtle">{post.pid}</h5> */}
                 <p className="card-text">{post.content}</p>
                 <h6 className="card-text text-dark p-3 mb-2 bg-light text-dark text-primary-emphasis">  {post.post}</h6>
                 <br />

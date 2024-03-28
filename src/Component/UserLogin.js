@@ -14,10 +14,14 @@ function UserLogin() {
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
-
+///*****************Register User ************************* */
   function registerUser() {
     navigator("/register");
   }
+
+
+
+
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
@@ -40,7 +44,7 @@ function UserLogin() {
         );
 
         if (validUser) {
-          // setLoggedIn(true);
+          setLoggedIn(true);
         } else {
           console.log("Invalid credentials");
         }
@@ -49,14 +53,21 @@ function UserLogin() {
         if (userData.password == password && userData.username === username) {
           setLoggedIn(true);
           setRoll(userData.role);
+
+          console.log("UserLogin Page Ok ");
         } else {
           console.log("Invalid credentials");
+          setError("Invalid username or password");
         }
       } else {
         console.log("Invalid response format");
+        setError("Invalid username or password");
       }
     } catch (error) {
-      console.error("Error fetching staff data:", error);
+      console.error("Error fetching User data:", error);
+      
+      setError("Invalid username or password");
+      window.location.reload();
     }
   };
 
@@ -64,9 +75,16 @@ function UserLogin() {
     // return <Navigate to="/feeds" />;
     if (role === "user") {
       navigator(`/feedpage/${username}`);
+    } else if (role === "admin") {
+      
+      window.location.reload();
+
+      //here We can Add The Admin Navigator
     } else {
       // setError('Wrong user');
-    //   navigator(`/`);
+      //   navigator(`/`);
+      window.location.reload();
+
     }
   }
 
