@@ -7,6 +7,7 @@ function Feeds() {
   const [name, setUsername] = useState("");
   const [id, setId] = useState("");
   const { username } = useParams();
+  const { i } = useParams();
   const navigate = useNavigate();
   const [successpost, setpostLogged] = useState(false);
   const [refreshPage, setRefreshPage] = useState(false);
@@ -14,20 +15,21 @@ function Feeds() {
   
       // console.log("FeedS Comp ID Checked"+id);
   useEffect(() => {
+    console.log("useEffect Method Before call"+username);
     fetchData(username);
-    // console.log("useEffect Method After call"+username);
-  }, []);
+    console.log("useEffect Method After call"+username);
+  }, [username]);
   
   const fetchData = async (username) => {
-    // console.log("Fetch Username "+username);
+    console.log("Fetch Username "+username);
 /******************************************************* */
 try { 
-  console.log("Fethch Data Method Before call");
-  const response =await fetch(`http://localhost:8080/api/getall/${username}`);
-  console.log("Fethch Data Method After call"+response);
+  console.log("Fethch Data Method Before call "+username);
+  const response =await fetch(`http://localhost:8080/api/getalluser/${username}`);
+  console.log("Fethch Data Method After call responce method "+response);
   if (response.ok) {
     const userData =await response.json();
-    // console.log(userData.username+"  ---------- User Data Checked");
+    console.log(userData.username+"  ---------- User Data Checked");
     
     
     // usernam=userData.username
@@ -45,39 +47,37 @@ try {
 }
 
 
-    /*********************************************************** */
-//     const response = await fetch('http://localhost:8080/api/userlogin/'+username).then((response)=>{
 
-//     console.log("Hellloooo   ");
-//     // return  response.json()
-//     const userData =  response.json()
-    // console.log("*******************************************************  "+id);
 
-//     // console.log(userData.username);
-//     // setUsername(userData.username);
 
-//     }).then((data)=>{
-//       console.log("Ramm");
-// console.log(data);
 
-//     })
-   
-    // fetch(`http://localhost:8080/api/getall/${username}`)
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     setUsername(data.username);
-    //     setId(data.id);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error fetching data:", error);
-    //   });
+
+
+
+
+
+
+
+
+
+console.log("Complete Fetch Method here ");
+
+
+
+
+
+
+
+
+
+
   };
 
-  let abc=2;
+  let abc=5;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("*******************************************************  "+id);
+    console.log("*******************************************************  "+ abc);
 
     const myDate = new Date();
     const formattedDate = myDate.toISOString().split('T')[0]; // Formats date as YYYY-MM-DD
@@ -85,7 +85,7 @@ try {
     setUsername(username);
     // console.log(username+"  ---------- User Name Checked");
     try {
-      const response = await fetch(`http://localhost:8080/api/addpost/${id}`, {
+      const response = await fetch(`http://localhost:8080/api/addpostfeed/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -122,11 +122,11 @@ try {
       // setRefreshPage(!refreshPage);
     }
     if (successpost) {
-      console.log();
-      navigate('/')
-      navigate(`/mypost/${username}`);
+      // console.log();
+      // navigate('/')
+      // navigate(`/mypost/${username}`);
     }else{
-      navigate(-1);
+      // navigate(-1);
     }
 
   };

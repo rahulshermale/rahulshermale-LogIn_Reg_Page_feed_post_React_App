@@ -70,7 +70,7 @@ const RegistrationForm = () => {
           setLoggedIn(true);
           if (role==='admin') {
             
-            navigate("/about");
+            navigate("/login");
           }else if (role==='user') {
 
             navigate("/userlogin");

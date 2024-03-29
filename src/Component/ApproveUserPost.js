@@ -72,8 +72,7 @@ function ApproveUserPost() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, role, post, date, name }),
-        // body: JSON.stringify({id, post, date: formattedDate, name }),
-      });
+          });
 
       console.log("Giving the response " + response);
       if (response.ok) {
@@ -81,12 +80,9 @@ function ApproveUserPost() {
         // window.prompt("Post submitted successfully!");
         window.location.reload();
         // const result = window.confirm("Post Succsesfully Create You Want to show your Post");
-
-       
-        setpostLogged = true;
+          setpostLogged = true;
         // navigate('/about')
-
-        // setRefreshPage(!refreshPage);
+     // setRefreshPage(!refreshPage);
       } else {
         console.error("Failed to create post");
         // setRefreshPage(!refreshPage);

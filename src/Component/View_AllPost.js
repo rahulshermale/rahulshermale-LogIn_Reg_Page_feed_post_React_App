@@ -61,11 +61,11 @@ fetch(`http://localhost:8080/api/deleteuserpost/${id}`,{
                 {/* <p className="card-text">Mobile Number: {emp.moNo}</p> */}
                 <br />
                 <div className="d-flex justify-content-between">
-                  <button className="btn btn-primary btn-sm" onClick={() => navigator(`/update/${emp.id}`)}>Aprove</button>
+                  {/* <button className="btn btn-primary btn-sm" onClick={() => navigator(`/update/${emp.id}`)}>Aprove</button> */}
                   {/* <button className="btn btn-danger btn-sm" onClick={() => navigator(`/delete/${emp.id}`)}>Delete</button> */}
                 
                 {/* Do NOT REMOVE */}
-                  <button className="btn btn-danger btn-sm" onClick={() => deletePostuser(emp.id)}>Delete</button>
+                  {/* <button className="btn btn-danger btn-sm" onClick={() => deletePostuser(emp.id)}>Delete</button> */}
                 </div>
               </div>
             </div>

@@ -9,6 +9,14 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 
 const Navbar1 = () => {
+
+
+  const onLogOut = () => {
+    localStorage.removeItem("loginUser");
+    window.location.href = "/userlogin";
+  };
+
+
   return (
     <Navbar sticky='top' expand="lg" className="custom-navbar navbar-expand-lg navbar-dark bg-primary">
        <Container>
@@ -42,9 +50,12 @@ const Navbar1 = () => {
               <NavDropdown.Item href="login">Admin Login</NavDropdown.Item>
               <NavDropdown.Item href="userlogin" to="/userlogin">User Login</NavDropdown.Item>
             </NavDropdown>
+           
         </div>
       {/* </div>
-    </nav> */}
+    </nav> */} <div> <button className="btn mt-3" onClick={onLogOut}>
+                Logout
+              </button></div>
     </Container>
     </Navbar>
   );
