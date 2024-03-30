@@ -76,8 +76,10 @@ function UserLogin() {
     if (role === "user") {
       navigator(`/feedpage/${username}`);
     } else if (role === "admin") {
-      
-      window.location.reload();
+     
+     
+      <Navigate to="/admindash" />;
+      // window.location.reload();
 
       //here We can Add The Admin Navigator
     } else {
@@ -98,7 +100,7 @@ function UserLogin() {
         <div className="col-md-6">
           <div className="card shadow">
             <div className="card-body">
-              <h2 className="card-title text-center mb-4">User Login</h2>
+              <h2 className="card-title text-center mb-4"> Login Page</h2>
               {error && <Alert variant="danger">{error}</Alert>}
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">

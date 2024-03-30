@@ -62,7 +62,11 @@ function registerUser(){
     // }
 
     if (loggedIn) {
+
+
         return <Navigate to="/admindash" />;
+
+          
     }
     return (
         <div className="container mt-5">
