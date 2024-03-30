@@ -5,8 +5,8 @@ import { Container,Row } from 'reactstrap'
 
 function Admindash() {
   return (
-    
-        <Container fluid className=''>
+    <div className='bg-info'>
+        <Container >
             <Row>
                 <AdminButtons />
                 <Col >
@@ -20,6 +20,7 @@ function Admindash() {
                 </Col>
             </Row>
         </Container>
+        </div>
   )
 }
 

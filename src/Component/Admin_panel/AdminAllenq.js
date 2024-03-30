@@ -25,11 +25,9 @@ function AdminAllenq() {
    
   }, [username]);
 
-  useEffect(()=>{
-    // forLoops();
-  },[])
+ 
 
-async function myfetch(username) {
+async function myfetch() {
   try {
     const response = await fetch(`http://localhost:8080/api/getfeed`);
     if (!response.ok) {
@@ -37,7 +35,7 @@ async function myfetch(username) {
         }
         const result = await response.json();
 
-        console.log("Admin All Enquerry result", result[0]);
+        console.log("Admin All Enquerry result", result[3]);
     
       setMydata(result);
 
@@ -47,48 +45,17 @@ async function myfetch(username) {
       };
   } 
 
-  setTimeout(() => {
-    // forLoops();
-   
-    // Your function to execute after 1 second
-  
-  }, 3000);
-
-  
+ 
 
 
 /************************************************************************* */
-  const approvePost = async(e,postId) => {
+  async function approvePost (e,abc) {
+    console.log(e +    "***************************Hellllooo****************************  " + abc );
     e.preventDefault();
-    console.log("*******************************************************  " + id );
-
-/*********************************** */
-forLoops(postId)
-
-     function forLoops(jk){
-  // console.log("MY FOR EACH METHOD");
-  // mydata.forEach((obj) => {
-       let obj=mydata[jk];
-    console.log("MY FOR EACH METHOD No 222222222222222222222"+ obj);
-
-    setName(obj.name);
-    setDate(obj.date);
-    setPost(obj.post);
-    // setId(obj.id);
-    
-    setRole(obj.registerlog.role);
-    setUsername(obj.registerlog.username);
-        console.log(`For Eaach Method_________ SET USER DATA WITH ID    ID: ${obj.id}, Name: ${obj.date}  ${obj.post}   ${obj.name} REG : ${obj.registerlog.role}`);
-
-}
-
-/********************************************************** */
-
-    // let obj=mydata[postId];
-    // setPost(obj.post);
-
+   
+    console.log("The id is Post Request "+ abc);
     try {
-      const response = await fetch(`http://localhost:8080/api/addpostuser`, {
+      const response = await fetch(`http://localhost:8080/api/getalljoin/${abc}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -99,10 +66,10 @@ forLoops(postId)
       console.log("Giving the response " + response);
       if (response.ok) {
         console.log("Post created successfully");
-        // window.prompt("Post submitted successfully!");
+        deletePostuser(post.id);
         window.location.reload();
         // const result = window.confirm("Post Succsesfully Create You Want to show your Post");
-          setpostLogged(true);
+          // setpostLogged(true);
         // navigate('/about')
      // setRefreshPage(!refreshPage);
       } else {
@@ -113,13 +80,7 @@ forLoops(postId)
       console.error("Error creating post:", error);
       // setRefreshPage(!refreshPage);
     }
-    if (successpost) {
-      
-      navigate("/");
-      navigate(`/mypost/${username}`);
-    } else {
-      navigate(-1);
-    }
+
 
   };
 /********************************************************************************* */
@@ -147,12 +108,14 @@ forLoops(postId)
           mr="4"
           className="mx-auto text-center p-3 mb-2  text-primary-emphasis"
         >
+          
           {mydata.map((post) => (
+            // post.feedId && (
             <div
-              key={post.id}
+              key={post.feedId}
               className="card mb-5 shadow-sm bg-success p-2 text-white bg-opacity-50"
             >
-              {/* {console.log("Map Inside00000000000000000000000000000000000000000000000000 " + post.id)} */}
+              {console.log("Map Inside00000000000000000000000000000000000000000000000000 " + post.feedId)}
 
               {}
               {/* {console.log("AdminAll enq Comp Post ID " + post.post)}
@@ -175,17 +138,24 @@ forLoops(postId)
 
                 <h6 className="card-text p-3 mb-2 bg-info-subtle text-info-emphasis">
                   <br />
-                  Created by: {post.name.toUpperCase()}
+                  Created by: {post.post}
                  
                   <br />
                   <br />
                 </h6>
                 <br />
+                <h6 className="card-text p-3 mb-2 bg-info-subtle text-info-emphasis">
+                  <br />
+                  feed id: {post.feedId}
+                 
+                  <br />
+                  <br />
+                </h6>
                 <br />
                 <div className="d-flex justify-content-between">
                   <button
                     className="btn btn-secondary btn-md"
-                    onClick={(e) => approvePost(e,post.id)}
+                    onClick={(e) => approvePost(e,post.feedId)}
                   >
                     Approve
                   </button>
@@ -198,6 +168,7 @@ forLoops(postId)
                 </div>
               </div>
             </div>
+          // )
           ))}
         </Col>
       </Row>

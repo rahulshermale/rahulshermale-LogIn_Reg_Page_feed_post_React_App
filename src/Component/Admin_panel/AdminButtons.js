@@ -12,9 +12,9 @@ function AdminButtons() {
                     {/* <Button  tag={Link} to="/showstaff">Staff</Button>
                     <Button  tag={Link} to="/courselist">Course</Button> */}
                     <Button className='btn btn-success ' tag={Link} to="/enqlist">All Post</Button>
-                    <button className="btn btn-success">
-              <Link className="nav-link" to="/enqlist">List </Link>
-            </button>
+                    {/* <button className="btn btn-success">
+                    {/* <Link className="nav-link" to="/enqlist">List </Link> 
+            </button> */}
                     <Button className='btn btn-info' tag={Link} to="/about">User List</Button>
 
                 </div>

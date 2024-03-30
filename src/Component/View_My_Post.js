@@ -30,49 +30,54 @@ const View_My_Post = () => {
   };
 
   return (
-    <div className="container">
-      <br />
-      <br />
-      <br />
-      <br />
-      <div className="row ">
-        <div className="card col-md-5 text-center">
-          <div className="">
-            <h2 className="card-title  text-center mb-4">My Post</h2>
-            <div className="container borederd">
-              <table className="table table-striped text-center">
-                <tbody>
+    <div className="container-fluid d-flex justify-content-center align-items bg-light mb-">
+      <div className="card text-center" style={{ width: "80%" }}>
+        <div className="card-body">
+           <div>
+             <h1 className="card-title bg-primary text-center mb-4">My Post</h1>
+             </div>
+          <div className="p-3 mb-2 bg-succes text-white">
+           
+            <div className="row">
+              {/* <table className="table table-striped text-center"> */}
+                
                   {mydata.map((emp) => (
-                    <tr key={emp.id}>
-                      <td>{emp.post}</td>
-                      <br />
-                      <td>Date: {emp.date}</td>
-                      <br />
-                      <td>Created: {emp.userId === id ? "Own" : "Guest"}</td>
-                      <br />
-                      <td>{emp.moNo}</td>
-                      <br />
-                      <td>
+                    <div key={emp.id} className="col-md-6">
+                                  <div className="card border-secondary mb-4">
+                                  <div className="card-header bg-secondar text-dark">
+                                  <div className="card-body">
+                      <h5 className="card-text text-center text-dark text-lg">{emp.post}</h5>
+                   
+                      <p className="card-text mt-2">Date: {emp.date}</p>
+                    
+                      <p className="card-text text-center">Created: {emp.userId === id ? "Own" : "Guest"}</p>
+                   
+                      <p className="card-text text-center">{emp.moNo}</p>
+                     
+                      <div className="d-flex justify-content-between row">
                         <button
-                          className="btn btn-secondary btn-sm text-center"
+                          className="btn btn-primary btn-sm "
                           onClick={() => updateEmployee(emp.id)}
                         >
                           Update
                         </button>
-                      </td>
+                      </div>
                       <br />
-                      <td>
+                      <div className=" justify-content-between row">
                         <button
-                          className="btn btn-info"
+                          className="btn btn-danger btn-sm "
                           onClick={() => deleteEmployee(emp.id)}
                         >
                           Delete
                         </button>
-                      </td>
-                    </tr>
+                      </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
                   ))}
-                </tbody>
-              </table>
+                
+             
             </div>
           </div>
         </div>
